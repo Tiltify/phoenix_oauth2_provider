@@ -1,16 +1,14 @@
 defmodule PhoenixOauth2Provider.Mixfile do
   use Mix.Project
 
-  @version "0.5.1"
-
   def project do
     [
       app: :phoenix_oauth2_provider,
-      version: @version,
-      elixir: "~> 1.8",
+      version: "0.5.1",
+      elixir: "~> 1.14.2",
       elixirc_paths: elixirc_paths(Mix.env),
       start_permanent: Mix.env == :prod,
-      compilers: [:phoenix] ++ Mix.compilers,
+      compilers: Mix.compilers,
       deps: deps(),
 
       # Hex
@@ -35,19 +33,22 @@ defmodule PhoenixOauth2Provider.Mixfile do
 
   defp deps do
     [
-      {:ex_oauth2_provider, "~> 0.5.1"},
-      {:phoenix, "~> 1.4"},
-      {:phoenix_html, "~> 2.0"},
+      {:ex_oauth2_provider,
+      git: "https://github.com/Tiltify/ex_oauth2_provider",
+      ref: "a0a2a5bac10a96891e9e8dfacadb63ae62a67bf1"},
+      {:phoenix, "~> 1.7.0-rc.0", override: true},
+      {:phoenix_html, "~> 3.0"},
+      {:phoenix_view, "~> 2.0"},
 
-      {:phoenix_ecto, "~> 4.0.0", only: [:test, :dev]},
-      {:credo, "~> 1.1.0", only: [:dev, :test]},
+      {:phoenix_ecto, "~> 4.4.0", only: [:test, :dev]},
+      {:credo, "~> 1.6.7", only: [:dev, :test]},
       {:jason, "~> 1.0", only: [:dev, :test]},
 
       {:ex_doc, ">= 0.0.0", only: :dev},
 
-      {:ecto_sql, "~> 3.0.0", only: :test},
+      {:ecto_sql, "~> 3.8", only: :test},
       {:plug_cowboy, "~> 2.0", only: :test},
-      {:postgrex, "~> 0.14.0", only: :test}
+      {:postgrex, "~> 0.16.5", only: :test}
     ]
   end
 
@@ -62,7 +63,7 @@ defmodule PhoenixOauth2Provider.Mixfile do
 
   defp docs do
     [
-      source_ref: "v#{@version}", main: "PhoenixOauth2Provider",
+      source_ref: "v0.5.1", main: "PhoenixOauth2Provider",
       canonical: "http://hexdocs.pm/phoenix_oauth2_provider",
       source_url: "https://github.com/danschultzer/phoenix_oauth2_provider",
       extras: ["README.md"]
