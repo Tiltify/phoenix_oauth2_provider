@@ -5,7 +5,7 @@ defmodule PhoenixOauth2Provider.Mixfile do
     [
       app: :phoenix_oauth2_provider,
       version: "0.5.1",
-      elixir: "~> 1.14.2",
+      elixir: "~> 1.17.2",
       elixirc_paths: elixirc_paths(Mix.env),
       start_permanent: Mix.env == :prod,
       compilers: Mix.compilers,
@@ -35,7 +35,7 @@ defmodule PhoenixOauth2Provider.Mixfile do
     [
       {:ex_oauth2_provider,
       git: "https://github.com/Tiltify/ex_oauth2_provider",
-      ref: "a0a2a5bac10a96891e9e8dfacadb63ae62a67bf1"},
+      ref: "c15bd7eae12fa407e0b29f09197a9762231ef86b"},
       {:phoenix, "~> 1.7.0-rc.0", override: true},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_view, "~> 2.0"},
