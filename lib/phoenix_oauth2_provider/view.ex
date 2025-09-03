@@ -7,7 +7,9 @@ defmodule PhoenixOauth2Provider.View do
   defmacro __using__(_opts) do
     quote do
       import unquote(__MODULE__)
-      import Phoenix.HTML.{Form, Link, Tag}
+      import Phoenix.HTML
+      import Phoenix.HTML.Form
+      use PhoenixHTMLHelpers
 
       alias PhoenixOauth2Provider.Router.Helpers, as: Routes
 
