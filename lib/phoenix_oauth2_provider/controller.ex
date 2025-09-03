@@ -7,7 +7,7 @@ defmodule PhoenixOauth2Provider.Controller do
   @doc false
   defmacro __using__(type) do
     quote do
-      use Phoenix.Controller
+      use Phoenix.Controller, formats: [:html, :json]
 
       alias PhoenixOauth2Provider.Router.Helpers, as: Routes
 
