@@ -36,11 +36,11 @@ defmodule PhoenixOauth2Provider.Mixfile do
       {:ex_oauth2_provider,
       git: "https://github.com/Tiltify/ex_oauth2_provider",
       ref: "c15bd7eae12fa407e0b29f09197a9762231ef86b"},
-      {:phoenix, "~> 1.7.0-rc.0", override: true},
-      {:phoenix_html, "~> 3.0"},
+      {:phoenix, "~> 1.8.1"},
+      {:phoenix_html, "~> 4.2.1"},
       {:phoenix_view, "~> 2.0"},
 
-      {:phoenix_ecto, "~> 4.4.0", only: [:test, :dev]},
+      {:phoenix_ecto, "~> 4.6.5", only: [:test, :dev]},
       {:credo, "~> 1.6.7", only: [:dev, :test]},
       {:jason, "~> 1.0", only: [:dev, :test]},
 
