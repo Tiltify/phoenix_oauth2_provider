@@ -1,7 +1,7 @@
 defmodule PhoenixOauth2Provider.View do
   @moduledoc false
 
-  alias Phoenix.HTML.Tag
+  alias PhoenixHTMLHelpers.Tag
 
   @doc false
   defmacro __using__(_opts) do
