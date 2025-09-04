@@ -38,7 +38,7 @@ defmodule PhoenixOauth2Provider.Controller do
   end
 
   defp put_layout(conn, nil) do
-    ["Endpoint" | web_context] =
+    [_ | web_context] =
       conn
       |> Phoenix.Controller.endpoint_module()
       |> Module.split()
@@ -67,8 +67,7 @@ defmodule PhoenixOauth2Provider.Controller do
 
   defp put_view(conn, nil), do: conn
   defp put_view(%{private: %{phoenix_view: phoenix_view}} = conn, web_module) do
-    %{_: p_view} = phoenix_view
-    view_module = Module.concat([web_module, p_view])
+    view_module = Module.concat([web_module, phoenix_view])
 
     Phoenix.Controller.put_view(conn, view_module)
   end
