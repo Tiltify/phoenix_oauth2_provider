@@ -66,7 +66,12 @@ defmodule PhoenixOauth2Provider.Controller do
   end
 
   defp put_view(conn, nil), do: conn
-  defp put_view(%{private: %{phoenix_view: phoenix_view}} = conn, web_module) do
+  defp put_view(%{private: %{phoenix_format: "html", phoenix_view: %{"html" => phoenix_view}}} = conn, web_module) do
+    view_module = Module.concat([web_module, phoenix_view])
+
+    Phoenix.Controller.put_view(conn, view_module)
+  end
+  defp put_view(%{private: %{phoenix_format: "json", phoenix_view: %{"json" => phoenix_view}}} = conn, web_module) do
     view_module = Module.concat([web_module, phoenix_view])
 
     Phoenix.Controller.put_view(conn, view_module)
