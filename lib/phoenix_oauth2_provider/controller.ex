@@ -7,7 +7,7 @@ defmodule PhoenixOauth2Provider.Controller do
   @doc false
   defmacro __using__(type) do
     quote do
-      use Phoenix.Controller, formats: [:html]
+      use Phoenix.Controller, formats: [html: "View", json: "View"]
 
       alias PhoenixOauth2Provider.Router.Helpers, as: Routes
 
@@ -66,12 +66,7 @@ defmodule PhoenixOauth2Provider.Controller do
   end
 
   defp put_view(conn, nil), do: conn
-  defp put_view(%{private: %{phoenix_view: %{"json" => phoenix_view}}} = conn, web_module) do
-    view_module = Module.concat([web_module, phoenix_view])
-
-    Phoenix.Controller.put_view(conn, view_module)
-  end
-  defp put_view(%{private: %{phoenix_view: %{"html" => phoenix_view}}} = conn, web_module) do
+  defp put_view(%{private: %{phoenix_view: phoenix_view}} = conn, web_module) do
     view_module = Module.concat([web_module, phoenix_view])
 
     Phoenix.Controller.put_view(conn, view_module)
